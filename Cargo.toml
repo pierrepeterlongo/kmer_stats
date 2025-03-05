@@ -1,0 +1,46 @@
+[package]
+name = "kmer_stats"
+version = "0.1.0"
+edition = "2021"
+
+authors = [
+	"Pierre Peterlongo <pierre.peterlongo@inria.fr>",
+	]
+description = "kmer stats: nb of sequences, kmers, nucleotides from fasta/fastq[.gz] files"
+rust-version = "1.70"
+
+readme = "Readme.md"
+license-file = "LICENSE"
+
+[dependencies]
+# Error management
+anyhow           = { version = "1" }
+
+# CLI parsing
+clap             = { version = "4", features = ["derive", "cargo"] }
+
+# File parsing
+fxread           = { version = "0.2" }
+
+# Parallel
+rayon            = { version = "1" }
+
+
+
+[dev-dependencies]
+assert_cmd      = { version = "2"}
+biotest         = { version = "0.2", features = ["fasta", "fastq", "sequence"] }
+rand            = { version = "0.8" }
+tempfile        = { version = "3" }
+
+[profile.release]
+lto = 'thin'
+opt-level = 3
+overflow-checks = false
+panic = 'abort'
+incremental = false
+
+
+[profile.profiling]
+inherits = "release"
+debug = true
