@@ -28,6 +28,13 @@ kmer_stats --in-sequences tiny_test/in.fa
 ```
 
 ```
+ kmer_stats --in-sequences tiny_test/in.fa --only-numbers
+500
+5
+350
+```
+
+```
 kmer_stats --in-sequences tiny_test/in.fa -k 2
 #nucleotides: 500
 #sequences: 5

@@ -23,6 +23,10 @@ pub struct Args {
     ///    Note: if not provided, the number of threads is set to the number of logical cores
     #[arg(short, long, default_value_t = 0, verbatim_doc_comment)]
     pub threads: usize,
+
+    /// only_numbers. Write only numbers, not their description
+    #[arg(long)]
+    pub only_numbers: bool,
 }
 
 /// check that a file name corresponds to a non empty file:

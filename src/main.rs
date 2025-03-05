@@ -21,6 +21,13 @@ fn main() -> anyhow::Result<()> {
     env::set_var("RAYON_NUM_THREADS", args.threads.to_string());
 
     let (total_sequences, total_kmer, total_nucleotides) = stats_fastx_file_par(args.in_sequences, args.kmer_size)?;
+    if args.only_numbers {
+        println!("{}", total_nucleotides);
+        println!("{}", total_sequences);
+        println!("{}", total_kmer);
+        return Ok(());
+    }
+    
     println!("#nucleotides: {}",
             total_nucleotides
             );
